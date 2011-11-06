@@ -1,0 +1,214 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head id="Head1"><title>
+	预约信息
+</title>
+    <style>
+    .titleTd {
+	font-family:"Verdana", "宋体", "Arial";
+	font-size: 12px;
+	text-align:right
+	
+}
+
+.contentTd {
+	font-family:"Verdana", "宋体", "Arial";
+	font-size: 12px;
+	text-align:left
+}
+
+
+.simpleTable {
+	font-family:"Verdana", "宋体", "Arial";
+	font-size: 12px;	
+	line-height: 27px;
+	background-color:#C4E1FF
+	
+
+}
+
+.simpleTr{
+	background-color:#E1F0FF
+	
+}
+
+.simpleTrTitle{
+	background-color:f4f4f4
+	font-size: 16px;
+	line-height: 28px;
+	text-align:center;
+	font-weight: bold;
+	background-image: url(../images/anbg.jpg);
+	height:28px;
+}
+
+.simpleTDTitle{
+	font-family:"Verdana", "宋体", "Arial";
+	font-size: 14px;
+	line-height: 150%;
+	font-weight: bold;
+	text-align:center;
+	height:26px
+
+}
+
+ 
+    </style>
+</head>
+<body  >
+<script language=javascript  >
+function GetInfo(obj)
+{
+  var textBox=obj.parentElement.children[0];
+  var lsh=textBox.value;
+  var dt=AjaxServer.GetStudentInfo(lsh).value;
+  
+
+  
+  if(dt)
+  {
+     if(dt.Rows.length>0)
+     {
+         xm= dt.Rows[0].XM;
+         sfzhm=dt.Rows[0].SFZHM;
+         obj.parentElement.children[1].innerHTML="姓名:"+xm+"     身份证号码:"+sfzhm;
+     }
+     else
+     {
+        alert("找不到该学员")
+     }
+     
+  }else{
+      alert("网络异常")
+  }
+  
+}
+/*
+var timeout=5;
+
+
+function stepTimeOut()
+{
+  timeout--;
+  
+  var min=Math.floor(timeout/60); 
+  if(min<1) 
+  {min==0} 
+  var sec=timeout%60; 
+
+
+  if(timeout>0) 
+  { 
+    bt=setTimeout('stepTimeOut()', 1000);
+  } 
+
+ 
+  window.document.getElementById("outtimefeng").innerHTML=min; 
+  window.document.getElementById("outtimemiao").innerHTML=sec; 
+  
+  
+   
+  
+}
+
+*/
+
+
+
+
+
+</script>
+
+    <form name="form1" method="post" action="Exam2_Sanxue.aspx" id="form1">
+<div>
+<input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="" />
+<input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="" />
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwULLTExNTc2MjQ3MjYPFgQeBmdldEJvb2ceA2dJdAIBFgICAw9kFhACAQ8PFgIeBFRleHQFCjIwMTEtMTEtMTFkZAIDDw8WAh8CBRnkuozljYHngrnlnLooMjA6MDAtMjE6MDApZGQCBQ8WAh4JaW5uZXJodG1sBQE0ZAIHDxYCHwMFAzQvMGQCCQ8PFgQfAgUNMjExMDcyMTY0MDg5Nx4HRW5hYmxlZGhkZAILDw8WAh8CZWRkAg0PDxYCHwIFIOivt+i+k+WFpei6q+S7veivgeeahOWJjTTkvY3mlbA6ZGQCDw8PFgIeB1Zpc2libGVnZGRkwz2DLILB9e689cXt6zn5OJwnPoU=" />
+</div>
+
+<script type="text/javascript">
+//<![CDATA[
+var theForm = document.forms['form1'];
+if (!theForm) {
+    theForm = document.form1;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+</script>
+
+
+<script type="text/javascript" src="/ajax/common.ashx"></script><script type="text/javascript" src="/ajax/AjaxServer,App_Code.jvucgh7a.ashx"></script>
+<div>
+
+	<input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="/wEWCQLWzYdsApn7+vIOAsz0+6YPApv7xqEEAoznisYGArursYYIAr71s8cPAoGVz7IIAqibpt4N2eBs1pEVVY06uYP7qs55DvyCrug=" />
+</div>
+    <TABLE align=center cellPadding=1  cellSpacing=1  class="simpleTable" style="width: 566px">
+    
+    <TR> 
+      <TD  COLSPAN="4" class="simpleTDTitle"  background="Images/anbg.jpg" align="center">  科目二（散学）预约场次信息
+      </TD>
+    </TR>
+    
+     <TR>
+          <TD align=left colSpan=6 style="height: 20px"><STRONG>预约信息：</STRONG></TD></TR>
+          
+          
+     <TR  class="simpleTr"> 
+      <TD WIDTH="20%"  class=titleTd>日期：</TD>
+      <TD width="30%"  class=contentTd> 
+          <span id="LableDate" style="display:inline-block;width:166px;">2011-11-11</span></TD>
+       <TD WIDTH="20%"  class=titleTd>场次：</TD>
+      <TD  class=contentTd style="width: 168px">
+          <span id="LabelShift" style="display:inline-block;width:163px;">二十点场(20:00-21:00)</span></TD>
+    </TR>
+    
+    
+    <TR  class="simpleTr"> 
+      <TD  height=27 class=titleTd>计划人数：</TD>
+      <TD id="LabelOutNum" height="27" class="contentTd">4</TD>
+
+       <TD  height=27 class=titleTd>已约/可约人数：</TD>
+      <TD id="LabelAllowNum" height="27" class="contentTd">4/0</TD>
+
+    </TR>
+    
+    <TR>
+          <TD align=left colSpan=6 style="height: 20px">
+              <strong>预约操作：<br />
+              </strong>流水号:<input name="txtlsh" type="text" value="2110721640897" id="txtlsh" disabled="disabled" />
+              <a id="LinkButton1" href="javascript:__doPostBack('LinkButton1','')"></a>
+              <span id="Label1" class="link">请输入身份证的前4位数:</span>
+              <input name="txtNum" type="text" id="txtNum" />
+             <center> <input type="submit" name="Button1" value="确定预约" id="Button1" />
+              <input type="submit" name="Button2" value="取消预约" id="Button2" /></center></TD></TR>
+    
+    <TR  class="simpleTr">
+      <td width="100%" colspan="4" style="height: 21px">
+      
+        <center> <font color="red"><a href="TestOrderMonthsInfo_Sanxue.aspx" target="_blank">查看散学预约列表</a></font></center>
+        
+      </td>
+    
+    </TABLE>
+    <center>
+        &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;<br />
+        &nbsp;
+        <br /><font color=red >&nbsp;</font> &nbsp;</center>
+    <input type="hidden" name="HiddenFieldshift_id" id="HiddenFieldshift_id" value="92802" />
+    <input type="hidden" name="HiddenFieldshift_no" id="HiddenFieldshift_no" value="15710" />
+    <input type="hidden" name="hfdLshs" id="hfdLshs" value="'0'" />
+    
+    
+    
+    </form>
+</body>
+</html>
