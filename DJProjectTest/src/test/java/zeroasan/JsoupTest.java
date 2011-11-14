@@ -12,9 +12,9 @@ import org.jsoup.select.Elements;
 public class JsoupTest {
 
 	public static void main(String[] args) throws Exception {
-//		File file1 = new File("");
-//		System.out.println(file1.getAbsolutePath());
-		File file = new File("src/main/resource/预约信息.htm");
+		File file1 = new File("");
+		System.out.println(file1.getAbsolutePath());
+		File file = new File("src/test/resource/预约信息.htm");
 //		FileReader reader = new FileReader(file);
 		Reader reader = new InputStreamReader(new FileInputStream(file), "UTF-8");
 		

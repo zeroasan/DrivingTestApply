@@ -2,6 +2,7 @@ package zeroasan;
 
 import java.awt.BorderLayout;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
@@ -27,9 +28,10 @@ public class DrivingTestApply extends JPanel {
 	protected static final String LS = System.getProperty("line.separator");
 
 //	private static final String SITE_LOGIN = "http://www.csdn.net/";
-	private static final String SITE_LOGIN = "http://203.91.44.33/Login.aspx";
-//	private static final String SITE_MAIN_PAGE = "http://www.programmer.com.cn/";
-	private static final String SITE_MAIN_PAGE = "http://203.91.44.33/frame1.htm";
+	private static final String SITE_LOGIN = "http://www.baidu.com";
+//	private static final String SITE_LOGIN = "http://203.91.44.33/Login.aspx";
+	private static final String SITE_MAIN_PAGE = "http://www.programmer.com.cn/";
+//	private static final String SITE_MAIN_PAGE = "http://203.91.44.33/frame1.htm";
 	
 	private static final String APPLY_PAGE = "http://203.91.44.33/Exam2_Sanxue.aspx";
 
@@ -37,11 +39,8 @@ public class DrivingTestApply extends JPanel {
 	//提示信息：姓名、身份证前后N位：分析出姓名，身份证，如果为身份证则判断前后及抽取数字
 	private User user;
 	
-	public DrivingTestApply(User user) {
-		super(new BorderLayout());
-		
-		this.user = user;
-		
+	public DrivingTestApply() {
+		super(new BorderLayout(10,10));
 		final JTabbedPane tabbedPane = new JTabbedPane();
 		tabbedPane.setTabLayoutPolicy(JTabbedPane.SCROLL_TAB_LAYOUT);
 		final JWebBrowser webBrowser = new JWebBrowser();
@@ -116,6 +115,11 @@ public class DrivingTestApply extends JPanel {
 		tabbedPane.addTab("Controled Browser", webBrowser);
 		add(tabbedPane, BorderLayout.CENTER);
 	}
+	
+	
+	public void setUser(User user) {
+		this.user = user;
+	}
 
 	/* Standard main method to try that test as a standalone application. */
 	public static void main(String[] args) {
@@ -129,9 +133,17 @@ public class DrivingTestApply extends JPanel {
 		NativeInterface.open();
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
+				
+				DrivingTestApply apply = new DrivingTestApply();
+				apply.setUser(user);
+				
 				JFrame frame = new JFrame("DJ Native Swing Test");
 				frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-				frame.getContentPane().add(new DrivingTestApply(user), BorderLayout.CENTER);
+				
+				JPanel userListPanel = new InfoPanel();
+				
+				frame.getContentPane().add(userListPanel, BorderLayout.NORTH);
+				frame.getContentPane().add(apply, BorderLayout.CENTER);
 				frame.setSize(800, 600);
 				frame.setLocationByPlatform(true);
 				frame.setVisible(true);
@@ -140,7 +152,7 @@ public class DrivingTestApply extends JPanel {
 		NativeInterface.runEventPump();
 	}
 	
-	
+	/**------------private methods-------------*/
 	private String getAnswer(String question) {
 		if(question.contains("姓名")) {
 			return this.user.name;
